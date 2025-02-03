@@ -1,36 +1,34 @@
 General Commands
 
-1. Clone the Repository
+**1. Clone the Repository**
 git clone <repository-url>
 cd <project-directory>
 
-2. Install Dependencies
-For CDK dependencies:
+**2. Install Dependencies**
+**For CDK dependencies:**
 npm install
 For Python dependencies (if using a Python Lambda function):
 pip install -r requirements.txt
 
-3. Authenticate Docker to AWS ECR
-Authenticate Docker to AWS ECR:
+**3. Authenticate Docker to AWS ECR**
 aws ecr get-login-password --region <aws-region> | docker login --username AWS --password-stdin <aws-account-id>.dkr.ecr.<aws-region>.amazonaws.com
 
-4. Build and Push Docker Image
-Build the Docker image:
+**4. Build and Push Docker Image**e
 docker build -t my-lambda-image .
 
-Tag the image with your ECR repository:
+**Tag the image with your ECR repository:**
 docker tag my-lambda-image:latest <aws-account-id>.dkr.ecr.<aws-region>.amazonaws.com/<ecr-repository-name>:latest
 
-Push the image to your ECR repository:
+**Push the image to your ECR repository:**
 docker push <aws-account-id>.dkr.ecr.<aws-region>.amazonaws.com/<ecr-repository-name>:latest
 
-5. Deploy the CDK Stack
-Bootstrap the CDK environment:
+**5. Deploy the CDK Stack**
+**Bootstrap the CDK environment:**
 cdk bootstrap
-Deploy the stack to AWS:
+**Deploy the stack to AWS:**
 cdk deploy
 
-6. Test the Lambda Function via API Gateway (cURL)
+**6. Test the Lambda Function via API Gateway (cURL)**
 Send a POST request to the API Gateway to test the Lambda function:
 curl -X POST https://<api-id>.execute-api.<aws-region>.amazonaws.com/prod/messages \
     -H "Content-Type: application/json" \
